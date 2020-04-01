@@ -434,7 +434,7 @@ constraintToEvTerm defs givens (ct,cls,op) = do
                         . splitFunTys          -- ([KnownNat x, KnowNat y], DKnownNat2 "+" x y)
                         . (`piResultTys` args0N) -- (KnowNat x, KnownNat y) => DKnownNat2 "+" x y
                         $ idType df_id         -- forall a b . (KnownNat a, KnownNat b) => DKnownNat2 "+" a b
-            (evs,new) <- unzip <$> mapM go_arg df_args
+            (evs,new) <- unzip <$> mapM go_arg (map scaledThing df_args)
             if className cls == className (knownBool defs)
                then return ((,concat new) <$> makeOpDictByFiat df cls args1N args0N op evs)
                else return ((,concat new) <$> makeOpDict df cls args1N args0N op evs)
