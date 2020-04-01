@@ -111,6 +111,7 @@ import GHC.TypeLits.Normalise.SOP   (SOP (..), Product (..), Symbol (..))
 import GHC.TypeLits.Normalise.Unify (CType (..),normaliseNat,reifySOP)
 
 -- GHC API
+import Multiplicity (scaledThing)
 import Class      (Class, classMethods, className, classTyCon)
 #if MIN_VERSION_ghc(8,6,0)
 import Coercion   (Role (Representational), mkUnivCo)
